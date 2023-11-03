@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConfig } from '../services/app-config/configuration';
 
@@ -9,7 +9,7 @@ import { getConfig } from '../services/app-config/configuration';
         const {
           database: { host, port, password, user, dbName },
         } = getConfig();
-
+        Logger.debug(host, port, user, dbName);
         return {
           type: 'postgres',
           host,

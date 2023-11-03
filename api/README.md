@@ -117,7 +117,7 @@ This starter kit subscribed to `OnModuleDestroy` event and [disconnects](./api/s
 
 Nest.js swagger module configured with the use of [Swagger CLI plugin](https://docs.nestjs.com/openapi/cli-plugin).
 
-API docs are generated with the start of app server automatically and available at [http://localhost:3000/api](http://localhost:3000/api):
+API docs are generated with the start of app server automatically and available at [http://localhost:9797/swagger](http://localhost:9797/swagger):
 
 <img width="1485" alt="Swagger doc generated" src="https://user-images.githubusercontent.com/5843270/143483373-a0f3fd48-4f27-4d53-9b8f-6b80bc147d48.png">
 

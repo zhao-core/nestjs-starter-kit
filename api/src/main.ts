@@ -32,19 +32,20 @@ async function bootstrap() {
     .setDescription(
       `<a
          target="_blank"
-         href="https://github.com/rodion-arr/nestjs-starter-kit"
-       >https://github.com/rodion-arr/nestjs-starter-kit</a>`,
+         href="https://github.com/zhao-core/nestjs-starter-kit"
+       >https://github.com/zhao-core/nestjs-starter-kit</a>`,
     )
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('swagger', app, document);
 
   const port = process.env.PORT || 9797;
 
   await app.listen(port, '0.0.0.0');
 
   logger.log(`App started on http://localhost:${port}`);
+  logger.log(`Swagger Document started on http://localhost:${port}/swagger`);
 }
 
 bootstrap();
