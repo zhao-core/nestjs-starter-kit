@@ -1,6 +1,6 @@
 # Nest.js starter kit
 
-[![test](https://github.com/rodion-arr/nestjs-starter-kit/workflows/Test/badge.svg)](https://github.com/rodion-arr/nestjs-starter-kit/actions?query=workflow%3A%22Test%22) [![codecov](https://codecov.io/gh/rodion-arr/nestjs-starter-kit/branch/main/graph/badge.svg?token=NGR0C23CMW)](https://codecov.io/gh/rodion-arr/nestjs-starter-kit)
+[![test](https://github.com/zhao-core/nestjs-starter-kit/workflows/Test/badge.svg)](https://github.com/zhao-core/nestjs-starter-kit/actions?query=workflow%3A%22Test%22) [![codecov](https://codecov.io/gh/zhao-core/nestjs-starter-kit/branch/main/graph/badge.svg?token=NGR0C23CMW)](https://codecov.io/gh/zhao-core/nestjs-starter-kit)
 
 This is a starter kit for typical Nest.js REST API project.
 
@@ -31,6 +31,7 @@ This repo provides an already configured REST API project with commonly used Nes
   - [Installation](#installation)
     - [Prerequisites](#prerequisites)
     - [Getting started](#getting-started)
+    - [Pm2 started](#pm2-start)
 
 ### Dockerized local development
 
@@ -151,7 +152,7 @@ Powered by [nodemailer](https://www.npmjs.com/package/nodemailer).
 
 ### Unit tests
 
-All code added in the project is covered with [unit tests](https://github.com/rodion-arr/nestjs-starter-kit/search?q=describe).
+All code added in the project is covered with [unit tests](https://github.com/zhao-core/nestjs-starter-kit/search?q=describe).
 
 You can find useful tests examples of:
 
@@ -159,6 +160,15 @@ You can find useful tests examples of:
 - Controller test [(user.controller.spec.ts)](./api/src/user/user.controller.spec.ts)
 - Middleware test [(async-storage.middleware.spec.ts)](./api/src/global/middleware/async-storage/async-storage.middleware.spec.ts)
 - Service test [(jwt.service.spec.ts)](./api/src/user/services/jwt/jwt.service.spec.ts)
+
+### Pm2 start
+```console
+npm run pm2:start
+```
+
+```console
+npm run pm2:stop
+```
 
 ## Installation
 
@@ -172,7 +182,7 @@ You can find useful tests examples of:
 - Clone the repository
 
 ```console
-git clone https://github.com/rodion-arr/nestjs-starter-kit.git
+git clone https://github.com/zhao-core/nestjs-starter-kit.git
 ```
 
 - Run docker containers (DB, Redis, etc)
