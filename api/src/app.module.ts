@@ -7,6 +7,8 @@ import { AppCacheModule } from './app-cache/app-cache.module';
 import { LoggerModule } from './logger/logger.module';
 import { AsyncStorageMiddleware } from './global/middleware/async-storage/async-storage.middleware';
 import { GlobalModule } from './global/global.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { TasksModule } from './schedule/tasks.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { GlobalModule } from './global/global.module';
     UserModule,
     ConfigModule,
     LoggerModule,
+    ScheduleModule.forRoot(),
+    TasksModule,
   ],
 })
 export class AppModule {
