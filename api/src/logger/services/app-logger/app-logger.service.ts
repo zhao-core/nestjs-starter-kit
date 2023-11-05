@@ -3,7 +3,6 @@ import { pino } from 'pino';
 import { AsyncLocalStorage } from 'async_hooks';
 import { ASYNC_STORAGE } from '../../../global/constants';
 import { ConfigService } from '@nestjs/config';
-import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class AppLoggerService implements LoggerService {

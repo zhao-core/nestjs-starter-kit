@@ -75,7 +75,7 @@ describe('AppLoggerService', () => {
     const module = await setUpModule();
     const service = module.get<AppLoggerService>(AppLoggerService);
 
-    service.log('message', 'context');
+    service.info('message', 'context');
 
     expect(logMock).toHaveBeenCalledWith(
       { traceId: 'uuid' },
@@ -94,6 +94,24 @@ describe('AppLoggerService', () => {
     const service = module.get<AppLoggerService>(AppLoggerService);
 
     service.warn('message', 'context');
+
+    expect(logMock).toHaveBeenCalledWith(
+      { traceId: 'uuid' },
+      '[context] message',
+    );
+  });
+
+  it('should define debug logger', async () => {
+    const pinoMock = jest.mocked(pino);
+    const logMock = jest.fn();
+    pinoMock.mockReturnValueOnce({
+      debug: logMock,
+    } as unknown as pino.Logger);
+
+    const module = await setUpModule();
+    const service = module.get<AppLoggerService>(AppLoggerService);
+
+    service.debug('message', 'context');
 
     expect(logMock).toHaveBeenCalledWith(
       { traceId: 'uuid' },
