@@ -32,6 +32,9 @@ This repo provides an already configured REST API project with commonly used Nes
     - [Prerequisites](#prerequisites)
     - [Getting started](#getting-started)
     - [Pm2 started](#pm2-start)
+    - [Cors middleware ](#Cors-middleware)
+    - [Helmet middleware](#Helmet-middleware)
+    - [ResponseTime Middleware](#ResponseTime-middleware)
 
 ### Dockerized local development
 
@@ -169,6 +172,15 @@ npm run pm2:start
 ```console
 npm run pm2:stop
 ```
+
+### Cors-middleware
+This is the Nest Middleware wrapper around cors. (https://github.com/wbhob/nest-middlewares/tree/master/packages/cors)
+
+### Helmet-middleware
+This is the Nest Middleware wrapper around helmet. (https://github.com/wbhob/nest-middlewares/tree/master/packages/helmet)
+
+### Helmet-middleware
+This is the Nest Middleware wrapper around response-time. (https://github.com/wbhob/nest-middlewares/tree/master/packages/response-time)
 
 ## Installation
 
