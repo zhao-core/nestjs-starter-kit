@@ -30,8 +30,10 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@nest-middlewares/cors": "^10.0.0",
     "@nest-middlewares/csurf": "^10.0.0",
     "@nest-middlewares/helmet": "^10.0.0",
+    "@nest-middlewares/response-time": "^10.0.0",
     "@nestjs/cache-manager": "^2.1.1",
     "@nestjs/common": "^10.2.8",
     "@nestjs/config": "^3.1.1",

@@ -5,10 +5,16 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@nest-middlewares/cors':
+    specifier: ^10.0.0
+    version: 10.0.0(@nestjs/common@10.2.8)
   '@nest-middlewares/csurf':
     specifier: ^10.0.0
     version: 10.0.0(@nestjs/common@10.2.8)
   '@nest-middlewares/helmet':
+    specifier: ^10.0.0
+    version: 10.0.0(@nestjs/common@10.2.8)
+  '@nest-middlewares/response-time':
     specifier: ^10.0.0
     version: 10.0.0(@nestjs/common@10.2.8)
   '@nestjs/cache-manager':
@@ -910,6 +916,18 @@ packages:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
 
+  /@nest-middlewares/cors@10.0.0(@nestjs/common@10.2.8):
+    resolution: {integrity: sha512-JThVRZaUPRJJcb9tOE/tHd/sUFoFj71UFmMtd9XUKxKesKf8d6gI6EzpQ1JOKEb80gssnXoz3Uc1RFBvNAD1JA==}
+    peerDependencies:
+      '@nestjs/common': ^10.0.0
+    dependencies:
+      '@nestjs/common': 10.2.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)
+      '@types/cors': 2.8.16
+      '@types/express': 4.17.17
+      '@types/express-serve-static-core': 4.17.39
+      cors: 2.8.5
+    dev: false
+
   /@nest-middlewares/csurf@10.0.0(@nestjs/common@10.2.8):
     resolution: {integrity: sha512-EQdGVn8zCVmKRTpJSjXv/L3cUQ980SWXq7MzcDQtlbH+g1IlTnUYrCzT3S8PWq4sEYumsAanVl/HgPLGTl8u4w==}
     peerDependencies:
@@ -932,6 +950,18 @@ packages:
       '@types/express-serve-static-core': 4.17.39
       '@types/helmet': 4.0.0
       helmet: 7.0.0
+    dev: false
+
+  /@nest-middlewares/response-time@10.0.0(@nestjs/common@10.2.8):
+    resolution: {integrity: sha512-bUypEjfSmroPwYN3scEIsEKj/6fKDR/rJJK7XXhPlxAajWBH/Zw4D/UZy+Jlp4ucwbxkfT3OkrwCyczewtbHlQ==}
+    peerDependencies:
+      '@nestjs/common': ^10.0.0
+    dependencies:
+      '@nestjs/common': 10.2.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)
+      '@types/express': 4.17.17
+      '@types/express-serve-static-core': 4.17.39
+      '@types/response-time': 2.3.8
+      response-time: 2.3.2
     dev: false
 
   /@nestjs/cache-manager@2.1.1(@nestjs/common@10.2.8)(@nestjs/core@10.2.8)(cache-manager@5.2.0)(reflect-metadata@0.1.13)(rxjs@7.8.0):
@@ -1377,6 +1407,12 @@ packages:
     resolution: {integrity: sha512-LZ8SD3LpNmLMDLkG2oCBjZg+ETnx6XdCjydUE0HwojDmnDfDUnhMKKbtth1TZh+hzcqb03azrYWoXLS8sMXdqg==}
     dev: true
 
+  /@types/cors@2.8.16:
+    resolution: {integrity: sha512-Trx5or1Nyg1Fq138PCuWqoApzvoSLWzZ25ORBiHMbbUT42g578lH1GT4TwYDbiUOLFuDsCkfLneT2105fsFWGg==}
+    dependencies:
+      '@types/node': 18.15.11
+    dev: false
+
   /@types/csurf@1.11.4:
     resolution: {integrity: sha512-AN4kWHIIrkphg/yWplRD66MSLLpbEnQD8Iikm/gY8NmSwDzzUgZVgkBr4oNEHOW4jsKPgF+x48UndWH01hquBQ==}
     dependencies:
@@ -1564,6 +1600,13 @@ packages:
     dependencies:
       '@types/node': 18.15.11
     dev: true
+
+  /@types/response-time@2.3.8:
+    resolution: {integrity: sha512-7qGaNYvdxc0zRab8oHpYx7AW17qj+G0xuag1eCrw3M2VWPJQ/HyKaaghWygiaOUl0y9x7QGQwppDpqLJ5V9pzw==}
+    dependencies:
+      '@types/express': 4.17.17
+      '@types/node': 18.15.11
+    dev: false
 
   /@types/semver@7.5.4:
     resolution: {integrity: sha512-MMzuxN3GdFwskAnb6fz0orFvhfqi752yjaXylr0Rp4oDg5H0Zn1IuyRhDVvYOwAXoJirx2xuS16I3WjxnAIHiQ==}
@@ -4967,6 +5010,11 @@ packages:
     dependencies:
       ee-first: 1.1.1
 
+  /on-headers@1.0.2:
+    resolution: {integrity: sha512-pZAE+FJLoyITytdqK0U5s+FIpjN0JP3OzFi/u8Rx+EV5/W+JTWGXG8xFzevE7AjBfDqHv/8vL8qQsIhHnqRkrA==}
+    engines: {node: '>= 0.8'}
+    dev: false
+
   /once@1.4.0:
     resolution: {integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E=}
     dependencies:
@@ -5542,6 +5590,14 @@ packages:
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
+
+  /response-time@2.3.2:
+    resolution: {integrity: sha1-/6cbq5UtYvfB1Jt0NDVfvGjf/Fo=}
+    engines: {node: '>= 0.8.0'}
+    dependencies:
+      depd: 1.1.2
+      on-headers: 1.0.2
+    dev: false
 
   /restore-cursor@3.1.0:
     resolution: {integrity: sha512-l+sSefzHpj5qimhFSE5a8nufZYAM3sBSVMAPtYkmC+4EH2anSGaEMXSD0izRQbu9nfyQ9y5JrVmp7E8oZrUjvA==}
