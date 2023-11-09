@@ -116,8 +116,8 @@ devDependencies:
     specifier: ^10.2.8
     version: 10.2.8(@nestjs/common@10.2.8)(@nestjs/core@10.2.8)(@nestjs/platform-express@10.2.8)
   '@types/bcryptjs':
-    specifier: ^2.4.2
-    version: 2.4.2
+    specifier: ^2.4.6
+    version: 2.4.6
   '@types/cache-manager':
     specifier: ^4.0.2
     version: 4.0.2
@@ -1347,8 +1347,8 @@ packages:
       '@babel/types': 7.23.0
     dev: true
 
-  /@types/bcryptjs@2.4.2:
-    resolution: {integrity: sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==}
+  /@types/bcryptjs@2.4.6:
+    resolution: {integrity: sha512-9xlo6R2qDs5uixm0bcIqCeMCE6HiQsIyel9KQySStiyqNl2tnj2mP3DX1Nf56MD6KMenNNlBBsy3LJ7gUEQPXQ==}
     dev: true
 
   /@types/body-parser@1.19.4:
