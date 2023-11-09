@@ -122,8 +122,8 @@ devDependencies:
     specifier: ^4.0.2
     version: 4.0.2
   '@types/cache-manager-redis-store':
-    specifier: ^2.0.1
-    version: 2.0.1
+    specifier: ^2.0.4
+    version: 2.0.4
   '@types/express':
     specifier: ^4.17.17
     version: 4.17.17
@@ -1357,8 +1357,8 @@ packages:
       '@types/connect': 3.4.37
       '@types/node': 18.15.11
 
-  /@types/cache-manager-redis-store@2.0.1:
-    resolution: {integrity: sha512-8QuccvcPieh1xM/5kReE76SfdcIdEB0ePc+54ah/NBuK2eG+6O50SX4WKoJX81UxGdW3sh/WlDaDNqjnqxWNsA==}
+  /@types/cache-manager-redis-store@2.0.4:
+    resolution: {integrity: sha512-EG4ac1KsUr07uv6N/O0X1OaQBNVKShVUxn+GwJQQpUkTEi4+KJl6yvqfwc4uTPT1+pwfKRgQhCoHQQCd/ObkZQ==}
     dependencies:
       '@types/cache-manager': 4.0.2
       '@types/redis': 2.8.32
