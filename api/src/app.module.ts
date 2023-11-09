@@ -32,10 +32,17 @@ import { ResponseTimeMiddleware } from '@nest-middlewares/response-time';
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AsyncStorageMiddleware).forRoutes('*');
+    // consumer.apply(AsyncStorageMiddleware).forRoutes('*');
     // CsurfMiddleware.configure({ cookie: true });
     // consumer.apply(CsurfMiddleware).forRoutes('*');
     // HelmetMiddleware.configure( /* options as per helmet docs */ );
-    consumer.apply(CorsMiddleware, HelmetMiddleware, ResponseTimeMiddleware).forRoutes('*');
+    consumer
+      .apply(
+        AsyncStorageMiddleware,
+        CorsMiddleware,
+        HelmetMiddleware,
+        ResponseTimeMiddleware,
+      )
+      .forRoutes('*');
   }
 }
