@@ -28,13 +28,13 @@ This repo provides an already configured REST API project with commonly used Nes
     - [Automatic APIs documentation with Swagger](#automatic-apis-documentation-with-swagger)
     - [E-mail service with local mail trap](#e-mail-service-with-local-mail-trap)
     - [Unit tests](#unit-tests)
+    - [Pm2 start](#pm2-start)
+    - [Cors-middleware](#cors-middleware)
+    - [Helmet-middleware](#helmet-middleware)
+    - [Response-middleware](#response-middleware)
   - [Installation](#installation)
     - [Prerequisites](#prerequisites)
     - [Getting started](#getting-started)
-    - [Pm2 started](#pm2-start)
-    - [Cors middleware ](#Cors-middleware)
-    - [Helmet middleware](#Helmet-middleware)
-    - [ResponseTime Middleware](#ResponseTime-middleware)
 
 ### Dockerized local development
 
@@ -165,6 +165,7 @@ You can find useful tests examples of:
 - Service test [(jwt.service.spec.ts)](./api/src/user/services/jwt/jwt.service.spec.ts)
 
 ### Pm2 start
+
 ```console
 npm run pm2:start
 ```
@@ -174,12 +175,15 @@ npm run pm2:stop
 ```
 
 ### Cors-middleware
+
 This is the Nest Middleware wrapper around cors. (https://github.com/wbhob/nest-middlewares/tree/master/packages/cors)
 
 ### Helmet-middleware
+
 This is the Nest Middleware wrapper around helmet. (https://github.com/wbhob/nest-middlewares/tree/master/packages/helmet)
 
-### Helmet-middleware
+### Response-middleware
+
 This is the Nest Middleware wrapper around response-time. (https://github.com/wbhob/nest-middlewares/tree/master/packages/response-time)
 
 ## Installation
