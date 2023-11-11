@@ -1,6 +1,6 @@
 # Nest.js starter kit
 
-[![test](https://github.com/rodion-arr/nestjs-starter-kit/workflows/Test/badge.svg)](https://github.com/rodion-arr/nestjs-starter-kit/actions?query=workflow%3A%22Test%22) [![codecov](https://codecov.io/gh/rodion-arr/nestjs-starter-kit/branch/main/graph/badge.svg?token=NGR0C23CMW)](https://codecov.io/gh/rodion-arr/nestjs-starter-kit)
+[![test](https://github.com/zhao-core/nestjs-starter-kit/workflows/Test/badge.svg)](https://github.com/zhao-core/nestjs-starter-kit/actions?query=workflow%3A%22Test%22) [![codecov](https://codecov.io/gh/zhao-core/nestjs-starter-kit/branch/main/graph/badge.svg?token=NGR0C23CMW)](https://codecov.io/gh/zhao-core/nestjs-starter-kit)
 
 This is a starter kit for typical Nest.js REST API project.
 
@@ -14,17 +14,27 @@ This repo provides an already configured REST API project with commonly used Nes
 
 ## Features
 
-- [Dockerized local development](#dockerized-local-development)
-- [Configuration via ENV variables](#configuration-via-env-variables)
-- [Validation via DTO](#validation-via-dto)
-- [DB migrations](#db-migrations)
-- [Redis cache](#redis-cache)
-- [JWT auth with passport.js](#jwt-auth-with-passportjs)
-- [Logger with TraceID generation](#logger-with-trace-id-generation)
-- [Graceful shutdown](#graceful-shutdown)
-- [Automatic APIs documentation with Swagger](#automatic-apis-documentation-with-swagger)
-- [Sending emails](#e-mail-service-with-local-mail-trap)
-- [Unit tests](#unit-tests)
+- [Nest.js starter kit](#nestjs-starter-kit)
+  - [Motivation](#motivation)
+  - [Features](#features)
+    - [Dockerized local development](#dockerized-local-development)
+    - [Configuration via ENV variables](#configuration-via-env-variables)
+    - [Validation via DTO](#validation-via-dto)
+    - [DB migrations](#db-migrations)
+    - [Redis cache](#redis-cache)
+    - [JWT auth with passport.js](#jwt-auth-with-passportjs)
+    - [Logger with Trace ID generation](#logger-with-trace-id-generation)
+    - [Graceful shutdown](#graceful-shutdown)
+    - [Automatic APIs documentation with Swagger](#automatic-apis-documentation-with-swagger)
+    - [E-mail service with local mail trap](#e-mail-service-with-local-mail-trap)
+    - [Unit tests](#unit-tests)
+    - [Pm2 start](#pm2-start)
+    - [Cors-middleware](#cors-middleware)
+    - [Helmet-middleware](#helmet-middleware)
+    - [Response-middleware](#response-middleware)
+  - [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Getting started](#getting-started)
 
 ### Dockerized local development
 
@@ -40,7 +50,7 @@ This project provides a set of config values out of the box e.g. for connecting 
 
 ### Validation via DTO
 
-Global [ValidationPipeline](./api/src/main.ts) enabled and requests to APIs are validated via [DTOs](./api/src/user/dto).  
+Global [ValidationPipeline](./api/src/main.ts) enabled and requests to APIs are validated via [DTOs](./api/src/user/dto).
 
 ### DB migrations
 
@@ -88,7 +98,7 @@ await this.cacheManager.get('key');
 
 JWT authentication is configured and available to use.
 
-User registration, login and JWT-protected API examples were added in [user.controller.ts](./api/src/user/user.controller.ts)  
+User registration, login and JWT-protected API examples were added in [user.controller.ts](./api/src/user/user.controller.ts)
 
 ### Logger with Trace ID generation
 
@@ -110,7 +120,7 @@ This starter kit subscribed to `OnModuleDestroy` event and [disconnects](./api/s
 
 Nest.js swagger module configured with the use of [Swagger CLI plugin](https://docs.nestjs.com/openapi/cli-plugin).
 
-API docs are generated with the start of app server automatically and available at [http://localhost:3000/api](http://localhost:3000/api):
+API docs are generated with the start of app server automatically and available at [http://localhost:9797/swagger](http://localhost:9797/swagger):
 
 <img width="1485" alt="Swagger doc generated" src="https://user-images.githubusercontent.com/5843270/143483373-a0f3fd48-4f27-4d53-9b8f-6b80bc147d48.png">
 
@@ -119,6 +129,7 @@ API docs are generated with the start of app server automatically and available 
 Mail service is available out of the box and can be used like this:
 
 Inject in constructor:
+
 ```typescript
 constructor(
   private readonly mailer: MailService,
@@ -126,6 +137,7 @@ constructor(
 ```
 
 Send mail:
+
 ```typescript
 await this.mailer.send({
   to: 'to-mail@example.com',
@@ -143,13 +155,36 @@ Powered by [nodemailer](https://www.npmjs.com/package/nodemailer).
 
 ### Unit tests
 
-All code added in the project is covered with [unit tests](https://github.com/rodion-arr/nestjs-starter-kit/search?q=describe).
+All code added in the project is covered with [unit tests](https://github.com/zhao-core/nestjs-starter-kit/search?q=describe).
 
 You can find useful tests examples of:
+
 - DB repository mock [(auth.service.spec.ts)](./api/src/user/services/auth/auth.service.spec.ts). Search for `getRepositoryToken`.
 - Controller test [(user.controller.spec.ts)](./api/src/user/user.controller.spec.ts)
 - Middleware test [(async-storage.middleware.spec.ts)](./api/src/global/middleware/async-storage/async-storage.middleware.spec.ts)
 - Service test [(jwt.service.spec.ts)](./api/src/user/services/jwt/jwt.service.spec.ts)
+
+### Pm2 start
+
+```console
+npm run pm2:start
+```
+
+```console
+npm run pm2:stop
+```
+
+### Cors-middleware
+
+This is the Nest Middleware wrapper around cors. (https://github.com/wbhob/nest-middlewares/tree/master/packages/cors)
+
+### Helmet-middleware
+
+This is the Nest Middleware wrapper around helmet. (https://github.com/wbhob/nest-middlewares/tree/master/packages/helmet)
+
+### Response-middleware
+
+This is the Nest Middleware wrapper around response-time. (https://github.com/wbhob/nest-middlewares/tree/master/packages/response-time)
 
 ## Installation
 
@@ -160,18 +195,21 @@ You can find useful tests examples of:
 
 ### Getting started
 
-- Clone the repository 
+- Clone the repository
+
 ```console
-git clone https://github.com/rodion-arr/nestjs-starter-kit.git
+git clone https://github.com/zhao-core/nestjs-starter-kit.git
 ```
 
 - Run docker containers (DB, Redis, etc)
+
 ```console
 cd nestjs-starter-kit/.docker-node-api
 docker-compose up -d
 ```
 
 - Go to api folder and copy env file
+
 ```console
 cd ../api
 cp .env.example .env
@@ -180,16 +218,19 @@ cp .env.example .env
 - Update .env file with credentials if needed
 
 - Next install dependencies
+
 ```console
 npm ci
 ```
 
 - Init config and run migrations
+
 ```console
 npm run migrations:up
 ```
 
 - Run application
+
 ```console
 npm start
 ```
