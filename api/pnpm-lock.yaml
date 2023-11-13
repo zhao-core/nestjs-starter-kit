@@ -78,7 +78,7 @@ dependencies:
     specifier: ^6.8.0
     version: 6.8.0
   nodemailer-smtp-transport:
-    specifier: ^2.4.2
+    specifier: ^2.7.4
     version: 2.7.4
   passport:
     specifier: ^0.6.0
