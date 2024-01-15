@@ -18,8 +18,8 @@ dependencies:
     specifier: ^10.0.0
     version: 10.0.0(@nestjs/common@10.2.8)
   '@nestjs/cache-manager':
-    specifier: ^2.1.1
-    version: 2.1.1(@nestjs/common@10.2.8)(@nestjs/core@10.2.8)(cache-manager@5.2.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)
+    specifier: ^2.2.0
+    version: 2.2.0(@nestjs/common@10.2.8)(@nestjs/core@10.2.8)(cache-manager@5.2.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)
   '@nestjs/common':
     specifier: ^10.2.8
     version: 10.2.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)
@@ -993,8 +993,8 @@ packages:
       response-time: 2.3.2
     dev: false
 
-  /@nestjs/cache-manager@2.1.1(@nestjs/common@10.2.8)(@nestjs/core@10.2.8)(cache-manager@5.2.0)(reflect-metadata@0.1.13)(rxjs@7.8.0):
-    resolution: {integrity: sha512-oYfRys4Ng0zp2HTUPNjH7gizf4vvG3PQZZ+3yGemb3xrF+p3JxDSK0cDq9NTjHzD5UmhjiyAftB9GkuL+t3r9g==}
+  /@nestjs/cache-manager@2.2.0(@nestjs/common@10.2.8)(@nestjs/core@10.2.8)(cache-manager@5.2.0)(reflect-metadata@0.1.13)(rxjs@7.8.0):
+    resolution: {integrity: sha512-hAcX1f5moiK7B8KnPZVfV/up4nrZnaeN6w0o3M+UzNJNlw6bsIH6bn7jpGqzySAWPD9iYE/rg5IxTe1vSWyWZg==}
     peerDependencies:
       '@nestjs/common': ^9.0.0 || ^10.0.0
       '@nestjs/core': ^9.0.0 || ^10.0.0
