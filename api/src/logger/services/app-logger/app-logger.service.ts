@@ -1,7 +1,7 @@
 import { Inject, Injectable, LoggerService } from '@nestjs/common';
 import { pino } from 'pino';
 import { AsyncLocalStorage } from 'async_hooks';
-import { ASYNC_STORAGE } from '../../../global/constants';
+import { ASYNC_STORAGE } from '../../../base/constants';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()

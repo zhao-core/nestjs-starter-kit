@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
-import { getConfig } from './src/services/app-config/configuration';
+import { getConfig } from './src/config/configuration';
 
 dotenv.config();
 

@@ -1,6 +1,6 @@
 import { Logger, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { getConfig } from '../services/app-config/configuration';
+import { getConfig } from '../config/configuration';
 
 @Module({
   imports: [

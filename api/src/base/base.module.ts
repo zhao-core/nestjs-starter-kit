@@ -16,4 +16,4 @@ import { ConfigModule } from '@nestjs/config';
   ],
   exports: [ASYNC_STORAGE, MailService],
 })
-export class GlobalModule {}
+export class BaseModule {}

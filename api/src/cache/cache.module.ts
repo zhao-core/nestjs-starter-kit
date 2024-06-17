@@ -1,6 +1,6 @@
 import { Inject, Logger, Module, OnModuleDestroy } from '@nestjs/common';
 import { CacheModule, CACHE_MANAGER } from '@nestjs/cache-manager';
-import { CacheConfigService } from './services/cache-config/cache-config.service';
+import { CacheConfigService } from './cache-config.service';
 import { ConfigModule } from '@nestjs/config';
 import { Cache } from 'cache-manager';
 import { LoggerModule } from '../logger/logger.module';
