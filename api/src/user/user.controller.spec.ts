@@ -46,7 +46,7 @@ describe('UserController', () => {
   describe('register method', () => {
     it('should register user', async () => {
       jest.spyOn(authService, 'register').mockResolvedValue({
-        id: 0,
+        id: '234',
         token: 'token',
         firstName: 'firstName',
         lastName: 'lastName',
@@ -64,7 +64,7 @@ describe('UserController', () => {
       ).toStrictEqual({
         message: 'User created',
         user: {
-          id: 0,
+          id: '234',
           token: 'token',
         },
       });

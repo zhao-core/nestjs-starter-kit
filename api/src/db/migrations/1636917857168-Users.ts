@@ -1,18 +1,18 @@
+import { TABLE_NAME } from '../../user/entities/user.entity';
+import {
+  softDeletes,
+  updateTimestamps,
+  uuidPrimary,
+} from '../../base/migrations';
 import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
 
 export class Users1636917857168 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'users',
+        name: TABLE_NAME,
         columns: [
-          {
-            name: 'id',
-            type: 'int',
-            isPrimary: true,
-            isGenerated: true,
-            generationStrategy: 'increment',
-          },
+          ...uuidPrimary,
           {
             name: 'first_name',
             type: 'varchar',
@@ -35,17 +35,14 @@ export class Users1636917857168 implements MigrationInterface {
             type: 'varchar',
             isNullable: true,
           },
-          {
-            name: 'created_at',
-            type: 'timestamp',
-            default: 'now()',
-          },
+          ...updateTimestamps,
+          ...softDeletes,
         ],
       }),
     );
 
     await queryRunner.createIndex(
-      'users',
+      TABLE_NAME,
       new TableIndex({
         name: 'IDX_USERS_NAME',
         columnNames: ['email'],
@@ -54,6 +51,6 @@ export class Users1636917857168 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('users');
+    await queryRunner.dropTable(TABLE_NAME);
   }
 }

@@ -75,7 +75,7 @@ describe('UserService', () => {
     expect(passwordSpy).toHaveBeenCalledWith('password');
     expect(saveSpy).toHaveBeenCalledTimes(2);
     expect(jwtSpy).toHaveBeenCalledWith({
-      id: 0,
+      id: '234',
       email: 'email',
       firstName: 'fName',
       lastName: 'lName',

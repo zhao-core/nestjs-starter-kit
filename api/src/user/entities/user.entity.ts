@@ -1,12 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity } from '../../base/entity/base.entity';
+import { Entity, Column } from 'typeorm';
 
+export const TABLE_NAME = 'tb_admin_user';
 @Entity({
-  name: 'users',
+  name: TABLE_NAME,
 })
-export class UserEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class UserEntity extends BaseEntity {
   @Column({
     name: 'first_name',
   })
