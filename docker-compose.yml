@@ -3,7 +3,7 @@ version: '3'
 services:
 
   ### DB ################################################
-  db:
+  postgres:
     image: postgres
     restart: always
     environment:
@@ -16,7 +16,7 @@ services:
 
   ### Redis ################################################
   redis:
-    build: ./redis
+    build: ./.docker/redis
     volumes:
       - ./.docker/data/redis:/data
     ports:
