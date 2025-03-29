@@ -1,15 +1,15 @@
-import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
+import { DataSource } from 'typeorm';
 import { getConfig } from './src/config/configuration';
 
 dotenv.config();
 
 const {
-  database: { host, port, password, user, dbName },
+  database: { host, port, password, user, dbName, dbType },
 } = getConfig();
 
 export default new DataSource({
-  type: 'postgres',
+  type: dbType,
   host,
   port,
   username: user,

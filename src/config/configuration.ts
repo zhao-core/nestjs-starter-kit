@@ -4,7 +4,7 @@ export const getConfig = (): AppConfig => {
     jwtSecret: process.env.JWT_SECRET as string,
     logLevel: process.env.LOG_LEVEL || 'info',
     database: {
-      dbType: process.env.DB_TYPE || 'mysql',
+      dbType: (process.env.DB_TYPE as any) || 'mysql',
       host: process.env.MYSQL_HOST as string,
       port: parseInt(process.env.MYSQL_PORT as string, 10) || 3306,
       user: process.env.MYSQL_USER as string,
@@ -40,7 +40,7 @@ export interface AppConfig {
 }
 
 export interface DbConfig {
-  dbType: string;
+  dbType: 'mysql' | 'postgres';
   host: string;
   port: number;
   user: string;

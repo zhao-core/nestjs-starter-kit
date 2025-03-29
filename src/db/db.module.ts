@@ -7,11 +7,11 @@ import { getConfig } from '../config/configuration';
     TypeOrmModule.forRootAsync({
       useFactory: async () => {
         const {
-          database: { host, port, password, user, dbName },
+          database: { host, port, password, user, dbName, dbType },
         } = getConfig();
         Logger.debug(host, port, user, dbName);
         return {
-          type: 'postgres',
+          type: dbType,
           host,
           port,
           username: user,
