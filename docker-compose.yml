@@ -1,28 +1,75 @@
-version: '3'
+version: '3.8'
 
+networks:
+  midway-ssr-net:
+    driver: bridge
 services:
 
-  ### DB ################################################
-  postgres:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: api
-    volumes:
-      - ./.docker/data/db:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+  # ### DB ################################################
+  # postgresql:
+  #   restart: always
+  #   container_name: v_postgresql_midway_stock
+  #   #image: arm64v8/postgres:latest
+  #   image: postgres:latest
+  #   ports:
+  #     - ${POSTGRES_PORT}:5432
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #     POSTGRES_DB: ${POSTGRES_DB}
+  #     PGDATA: /var/lib/postgresql/data/pgdata
+  #   # healthcheck:
+  #   #   test: ["CMD-SHELL", "netstat -tnlp|grep 5432 || exit 1"]
+  #   #   interval: 10s
+  #   #   timeout: 20s
+  #   #   retries: 3
+  #   networks:
+  #     - midway-ssr-net
 
   ### Redis ################################################
   redis:
-    build: ./.docker/redis
+      image: arm64v8/redis:latest
+      # image: redis:latest
+      container_name: v_redis_midway_stock
+      command:
+        - /bin/sh
+        - -c
+        # - Double dollars, so that the variable is not expanded by Docker Compose
+        # - Surround by quotes, so that the shell does not split the password
+        # - The ${variable:?message} syntax causes shell to exit with a non-zero
+        #   code and print a message, when the variable is not set or empty
+        - redis-server --requirepass "$${REDIS_PASSWORD:?REDIS_PASSWORD variable is not set}"
+      env_file:
+        - ./.env
+      # healthcheck:
+      #   test: ["CMD-SHELL", "netstat -tnlp|grep 6379 || exit 1"]
+      #   interval: 10s
+      #   timeout: 20s
+      #   retries: 3
+      ports:
+        - ${REDIS_PORT}:6379
+      volumes:
+        - /.docker/redis:/data
+      networks:
+        - midway-ssr-net
+  
+  mysql:
+    image: mysql:8.4.2
+    restart: always
+    container_name: v_mysql_midway_stock
     volumes:
-      - ./.docker/data/redis:/data
+      - ./.docker/data/mysql:/var/lib/mysql # 挂载目录，持久化存储
     ports:
-      - "6379:6379"
-
-  ### Mail trap ################################################
+      - ${MYSQL_PORT}:3306
+    environment:
+      TZ: Asia/Shanghai # 设置时区
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD} # 设置 root 用户的密码
+      MYSQL_USER: ${MYSQL_USER} # 创建专用用户
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD} # 设置专用用户密码
+      MYSQL_DATABASE: ${MYSQL_DB} # 自动创建数据库
+    networks:
+      - midway-ssr-net
+    ### Mail trap ################################################
   mailhog:
     image: mailhog/mailhog
     restart: always

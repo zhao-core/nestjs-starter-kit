@@ -1,8 +1,8 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { AppLoggerService } from './app-logger.service';
-import { ASYNC_STORAGE } from '../../../base/constants';
 import { ConfigService } from '@nestjs/config';
+import { Test, TestingModule } from '@nestjs/testing';
 import { pino } from 'pino';
+import { ASYNC_STORAGE } from '../../../base/constants';
+import { AppLoggerService } from './app-logger.service';
 
 jest.mock('pino', () => ({
   pino: jest.fn(),

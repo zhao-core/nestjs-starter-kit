@@ -1,6 +1,6 @@
-import { getConfig } from './configuration';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { getConfig } from './configuration';
 
 describe('config helper', () => {
   it('should be defined', () => {
@@ -26,10 +26,11 @@ describe('config helper', () => {
       },
       database: {
         dbName: 'api',
+        dbType: 'mysql',
         host: 'localhost',
         password: 'secret',
-        port: 5432,
-        user: 'postgres',
+        port: 3306,
+        user: 'root',
       },
       jwtSecret: 'secret',
       logLevel: 'debug',

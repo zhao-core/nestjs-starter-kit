@@ -4,11 +4,12 @@ export const getConfig = (): AppConfig => {
     jwtSecret: process.env.JWT_SECRET as string,
     logLevel: process.env.LOG_LEVEL || 'info',
     database: {
-      host: process.env.DB_HOST as string,
-      port: parseInt(process.env.DB_PORT as string, 10) || 5432,
-      user: process.env.DB_USER as string,
-      password: process.env.DB_PASSWORD as string,
-      dbName: process.env.DB_NAME as string,
+      dbType: process.env.DB_TYPE || 'mysql',
+      host: process.env.MYSQL_HOST as string,
+      port: parseInt(process.env.MYSQL_PORT as string, 10) || 3306,
+      user: process.env.MYSQL_USER as string,
+      password: process.env.MYSQL_PASSWORD as string,
+      dbName: process.env.MYSQL_DB as string,
     },
     cache: {
       host: process.env.REDIS_HOST as string,
@@ -39,6 +40,7 @@ export interface AppConfig {
 }
 
 export interface DbConfig {
+  dbType: string;
   host: string;
   port: number;
   user: string;
