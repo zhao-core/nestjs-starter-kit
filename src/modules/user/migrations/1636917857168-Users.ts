@@ -1,10 +1,10 @@
-import { TABLE_NAME } from '../../user/entities/user.entity';
+import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
 import {
   softDeletes,
   updateTimestamps,
   uuidPrimary,
-} from '../../base/migrations';
-import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
+} from '../../../base/migrations';
+import { TABLE_NAME } from '../../user/entities/user.entity';
 
 export class Users1636917857168 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

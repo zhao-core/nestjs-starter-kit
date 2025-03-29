@@ -7,6 +7,5 @@ export default [
     length: '36',
     isPrimary: true,
     generationStrategy: 'uuid',
-    default: 'uuid_generate_v4()',
   } as TableColumnOptions,
 ];

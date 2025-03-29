@@ -1,5 +1,5 @@
-import { BaseEntity } from '../../base/entity/base.entity';
-import { Entity, Column } from 'typeorm';
+import { Column, Entity } from 'typeorm';
+import { BaseEntity } from '../../../base/entity/base.entity';
 
 export const TABLE_NAME = 'tb_admin_user';
 @Entity({

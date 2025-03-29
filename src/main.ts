@@ -1,31 +1,13 @@
+import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
-import { AppLoggerService } from './logger/services/app-logger/app-logger.service';
-import * as bodyParser from 'body-parser';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as bodyParser from 'body-parser';
+import * as cookieParser from 'cookie-parser';
+import 'module-alias/register'; // 解决路径别名问题
+import { AppModule } from './app.module';
+import { AppLoggerService } from './logger/services/app-logger/app-logger.service';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-
-  /*
-    Required to be executed before async storage middleware
-    and not loose context on POST requests
-   */
-  app.use(bodyParser.json());
-
-  app.enableShutdownHooks();
-
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      transform: true,
-    }),
-  );
-
-  const logger = app.get(AppLoggerService);
-  app.useLogger(logger);
-
+function setupSwagger(app: INestApplication<any>) {
   // API docs
   const config = new DocumentBuilder()
     .setTitle('Node API')
@@ -39,6 +21,32 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
+}
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  /*
+    Required to be executed before async storage middleware
+    and not loose context on POST requests
+   */
+  app.use(bodyParser.json());
+
+  app.use(cookieParser()); // 使用 Cookie Parser 中间件
+
+  app.enableShutdownHooks();
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+    }),
+  );
+
+  const logger = app.get(AppLoggerService);
+  app.useLogger(logger);
+
+  setupSwagger(app);
 
   const port = process.env.PORT || 9797;
 

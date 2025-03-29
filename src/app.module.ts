@@ -1,17 +1,17 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
-import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
-import { DbModule } from './db/db.module';
-import { getConfig } from './config/configuration';
-import { AppCacheModule } from './cache/cache.module';
-import { LoggerModule } from './logger/logger.module';
-import { AsyncStorageMiddleware } from './base/middleware/async-storage/async-storage.middleware';
-import { BaseModule } from './base/base.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { BaseModule } from './base/base.module';
+import { AsyncStorageMiddleware } from './base/middleware/async-storage/async-storage.middleware';
+import { AppCacheModule } from './cache/cache.module';
+import { getConfig } from './config/configuration';
+import { DbModule } from './db/db.module';
+import { LoggerModule } from './logger/logger.module';
+import { UserModule } from './modules/user/user.module';
 import { TasksModule } from './schedule/tasks.module';
 // import { CsurfMiddleware } from '@nest-middlewares/csurf';
-import { HelmetMiddleware } from '@nest-middlewares/helmet';
 import { CorsMiddleware } from '@nest-middlewares/cors';
+import { HelmetMiddleware } from '@nest-middlewares/helmet';
 import { ResponseTimeMiddleware } from '@nest-middlewares/response-time';
 
 @Module({

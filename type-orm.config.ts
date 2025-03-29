@@ -15,7 +15,8 @@ export default new DataSource({
   username: user,
   password,
   database: dbName,
-  entities: ['src/**/*.entity.ts'],
+  logging: true,
+  entities: ['dist/**/*.entity.ts'],
   migrations: ['src/**/migrations/*.ts'],
   subscribers: ['src/**/subscribers/*.ts'],
 });
