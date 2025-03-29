@@ -27,7 +27,9 @@
     "migrations:new": "npm run typeorm migration:create",
     "migrations:up": "npm run typeorm migration:run -- -d ./type-orm.config.ts",
     "migrations:revert": "npm run typeorm migration:revert -- -d ./type-orm.config.ts",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "commit-lint": "commitlint --config commitlint.config.js -e -V",
+    "prepare": "husky && husky install && npm run type-check && prettier --write \"{src,apps,libs}/**/*\" "
   },
   "dependencies": {
     "@nest-middlewares/cors": "^10.0.0",
@@ -52,6 +54,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "dotenv": "^16.4.7",
+    "husky": "^9.1.7",
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.9.16",
     "nodemailer-smtp-transport": "^2.7.4",
@@ -67,6 +70,8 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@nestjs/cli": "^10.4.9",
     "@nestjs/schematics": "^9.2.0",
     "@nestjs/testing": "^10.4.15",
@@ -87,6 +92,7 @@
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^9.1.7",
     "jest": "^27.5.1",
     "prettier": "^2.8.8",
     "source-map-support": "^0.5.21",
@@ -97,6 +103,21 @@
     "tsconfig-paths": "^4.2.0",
     "typeorm": "^0.3.20",
     "typescript": "^4.9.5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
+      "prettier --write--parser json"
+    ],
+    "package.json": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
   },
   "jest": {
     "moduleFileExtensions": [
