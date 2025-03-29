@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "author": "",
   "private": true,
@@ -28,6 +28,7 @@
     "migrations:up": "npm run typeorm migration:run -- -d ./type-orm.config.ts",
     "migrations:revert": "npm run typeorm migration:revert -- -d ./type-orm.config.ts",
     "type-check": "tsc --noEmit",
+    "release": "standard-version",
     "commit-lint": "commitlint --config commitlint.config.js -e -V",
     "prepare": "husky && husky install && npm run type-check && prettier --write \"{src,apps,libs}/**/*\" "
   },
@@ -89,6 +90,7 @@
     "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
+    "conventional-changelog-cli": "^5.0.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -96,6 +98,7 @@
     "jest": "^27.5.1",
     "prettier": "^2.8.8",
     "source-map-support": "^0.5.21",
+    "standard-version": "^9.5.0",
     "supertest": "^6.3.4",
     "ts-jest": "^27.1.5",
     "ts-loader": "^9.5.1",
