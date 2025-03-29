@@ -1,3 +1,4 @@
+import { CacheInterceptor } from '@nestjs/cache-manager';
 import {
   Body,
   Controller,
@@ -6,13 +7,12 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { AuthService } from './services/auth/auth.service';
-import { LoginDto } from './dto/login.dto';
-import { UserService } from './services/user/user.service';
-import { JwtAuthGuard } from './guards/jwt-auth/jwt-auth.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { CacheInterceptor } from '@nestjs/cache-manager';
+import { CreateUserDto } from './dto/create-user.dto';
+import { LoginDto } from './dto/login.dto';
+import { JwtAuthGuard } from './guards/jwt-auth/jwt-auth.guard';
+import { AuthService } from './services/auth/auth.service';
+import { UserService } from './services/user/user.service';
 
 @ApiTags('user')
 @Controller('user')
@@ -27,11 +27,8 @@ export class UserController {
     const newUser = await this.authService.register(user);
 
     return {
-      message: 'User created',
-      user: {
-        id: newUser.id,
-        token: newUser.token,
-      },
+      id: newUser.id,
+      token: newUser.token,
     };
   }
 
@@ -40,7 +37,6 @@ export class UserController {
     const token = await this.authService.login(login);
 
     return {
-      message: 'Login successful',
       token,
     };
   }
@@ -52,9 +48,6 @@ export class UserController {
   async getUsers() {
     const users = await this.userService.getAll();
 
-    return {
-      message: 'Users retrieved successfully',
-      users,
-    };
+    return users;
   }
 }

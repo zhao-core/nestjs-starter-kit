@@ -1,13 +1,13 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { UserController } from './user.controller';
-import { AuthService } from './services/auth/auth.service';
-import { UserService } from './services/user/user.service';
-import { PasswordService } from './services/password/password.service';
 import { ConfigService } from '@nestjs/config';
-import { JwtService } from './services/jwt/jwt.service';
+import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { UserEntity } from './entities/user.entity';
 import { mockUserEntity } from './entities/__fixtures__/user-entity.fixture';
+import { UserEntity } from './entities/user.entity';
+import { AuthService } from './services/auth/auth.service';
+import { JwtService } from './services/jwt/jwt.service';
+import { PasswordService } from './services/password/password.service';
+import { UserService } from './services/user/user.service';
+import { UserController } from './user.controller';
 
 describe('UserController', () => {
   let controller: UserController;
@@ -62,11 +62,8 @@ describe('UserController', () => {
           password: 'p',
         }),
       ).toStrictEqual({
-        message: 'User created',
-        user: {
-          id: '234',
-          token: 'token',
-        },
+        id: '234',
+        token: 'token',
       });
     });
   });
@@ -81,7 +78,6 @@ describe('UserController', () => {
           password: 'p',
         }),
       ).toStrictEqual({
-        message: 'Login successful',
         token: 'mock-token',
       });
     });
@@ -93,10 +89,7 @@ describe('UserController', () => {
         .spyOn(userService, 'getAll')
         .mockResolvedValue([mockUserEntity]);
 
-      expect(await controller.getUsers()).toStrictEqual({
-        message: 'Users retrieved successfully',
-        users: [mockUserEntity],
-      });
+      expect(await controller.getUsers()).toStrictEqual([mockUserEntity]);
       expect(userServiceSpy).toHaveBeenCalledTimes(1);
     });
   });
